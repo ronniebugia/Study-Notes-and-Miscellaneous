@@ -1,0 +1,217 @@
+Java Notes
+
+Get Started
+In file MyClass.java
+
+	public class MyClass {
+	  public static void main(String[] args) {
+		System.out.println("Hello World");
+	  }
+	}
+
+Class must always match the file name. Every Java program has the following line
+
+	public static void main(String[] args)
+
+To print to console
+
+	System.out.println("Hello World");
+
+Primitive Data Types
+
+	byte - 8-bit signed integer -128 to 127
+	short - 16-bit signed integer -32,768 to 32,767
+	int - 32-bit signed integer	-2^31 to 2^31 - 1
+	long - 64-bit two's complement integer -2^63 to 2^63 - 1
+
+	byte < short < int < long
+
+	float - 32-bit IEEE 754 floating point
+	double - 64-bit IEEE 754 floating point 
+	boolean - true or false
+	char - single bit \u0000 to \uffff
+
+Data Types
+In Java, there are different types of variables, for example:
+
+	String - stores text, such as "Hello". String values are surrounded by double quotes
+	int - stores integers (whole numbers), without decimals, such as 123 or -123
+	float - stores floating point numbers, with decimals, such as 19.99 or -19.99
+	char - stores single characters, such as 'a' or 'B'. Char values are surrounded by single quotes
+	boolean - stores values with two states: true or false
+
+	int myNum = 5;
+	float myFloatNum = 5.99f;
+	char myLetter = 'D';
+	boolean myBool = true;
+	String myText = "Hello";
+
+Command Line
+To compile
+	javac MyClass.java 
+
+To run
+	java MyClass.java
+
+STDIN and STDOUT
+To use scanner
+
+	import java.util.Scanner
+	
+	Scanner scan = new Scanner(System.in);
+	
+	scan.close();
+	scan.hasNextLine();
+	scan.next();
+
+Loops
+	while(){
+		//Code goes here
+	}
+
+	for(int i=0; i < 100; i++){
+	
+	}
+
+
+Math Operations
+Exponential
+	Math.pow(first, second);
+
+Rounding
+	Math.rount();
+
+Static Initializer
+Using inline
+	static int;
+	
+Using Blocks
+	static {
+		//Code here
+	}
+
+Integer to String
+Given int n (can apply to doubles)
+	String s = String.valueOf(n);
+or (only for int)
+	String s = Integer.toString(n);
+
+
+Object Oriented Programming
+
+Inheritance
+Animal is the SuperClass() and Bird inherits from Animal 
+
+class Animal{
+    void walk(){
+        System.out.println("I am walking");
+    }
+}	
+
+class Bird extends Animal {
+    void fly() {
+        System.out.println("I am flying");
+    }
+}
+You can instantiate an Animal or a Bird
+
+Abstract Classes
+Abstract Classes cannot be instantiated, but they are a basis for new subclasses.
+
+abstract class Book{
+	String title;
+	abstract void setTitle(String s);
+	String getTitle(){
+		return title;
+	}
+}
+
+If you try Book new_novel=new Book();  you will get an error.
+
+MyBook is a subclass of abstact class Book
+
+class MyBook extends Book{
+    String title;
+
+    void setTitle(String s){
+        title = s;
+    }
+
+    String getTitle(){
+        return title;
+    }
+}
+
+Interfaces
+A reference type in Java. A collection of abstact methods. A class inherits an interface
+using implements. You cannot instantiate an interface. All methods in an interface are
+abstract. Methods in interface are implicitly public.
+
+Mammal implements Animal.If a class does not perform all the behaviors of the interface, the 
+class must declare itself as abstract.
+
+interface Animal {
+   public void eat();
+   public void travel();
+}
+
+public class MammalInt implements Animal {
+
+   public void eat() {
+      System.out.println("Mammal eats");
+   }
+
+   public void travel() {
+      System.out.println("Mammal travels");
+   } 
+
+   public int noOfLegs() {
+      return 0;
+   }
+
+   public static void main(String args[]) {
+      MammalInt m = new MammalInt();
+      m.eat();
+      m.travel();
+   }
+} 
+
+Why use an interface? An interface is a guarantee that all methods or static variables 
+will be available for all abstractions of the interface.
+
+Overriding Methods
+A subclass can overrid a superclass' methods.
+
+Sports is the SuperClass and Soccer is the SubClass
+
+	class Sports{
+		String getName(){
+			return "Generic Sports";
+		}
+		void getNumberOfTeamMembers(){
+			System.out.println( "Each team has n players in " + getName() );
+		}
+	}
+
+	class Soccer extends Sports{
+		
+		String originalName = super.getName();
+
+		@Override
+		String getName(){
+			return "Soccer Class";
+		}
+	}
+
+You can still use the superclass' functions by declaring super.functionName()
+
+Rules of Overriding
+0) Don't talk about overriding
+1) A protected instance method in the super-class can be made public, but not private, 
+in the subclass. Doing so, will generate compile-time error.
+2) Final methods cannot be overriden.
+3) Static methods cannot be overriden. There will be an error. If you override and make a method static
+in the subclass when it was already static in the superclass, your superclass method will be hidden.
+
+
+	
