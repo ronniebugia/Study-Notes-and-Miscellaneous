@@ -1,0 +1,139 @@
+C++ Notes
+
+Here is an example of a .cpp file
+
+	#include <iostream> 
+
+	using namespace std;
+
+	int main(){
+		cout<<"Hello, World";
+		return 0;
+	}
+
+All .cpp files need a main().
+
+In C++, you can read a single whitespace-separated token 
+of input using cin, and print output to stdout using cout. 
+
+	int a, b, c;
+
+    cin >> a >> b >> c;
+    cout << a+b+c;
+
+Variables
+Constants cannot be changed
+
+	const double PI = 3.14159
+	Typically in all CAPS
+
+Data Types
+
+Int ("%d"): 32 Bit integer
+Long ("%ld"): 64 bit integer
+Char ("%c"): Character type
+Float ("%f"): 32 bit real value
+Double ("%lf"): 64 bit real value
+
+To read a data type
+	
+	scanf("`format_specifier`", &val)
+
+To read char followed by a double
+
+		char ch;
+		double d;
+		scanf("%c %lf", &ch, &d);
+
+To print
+	
+		printf("%c lf", &ch, &d);
+		\n and endl for new line
+		
+Functions 
+
+	return_type function_name(arg_type_1 arg_1, arg_type_2 arg_2, ...) {
+		...
+		...
+		...
+		[if return_type is non void]
+			return something of type `return_type`;
+	}
+
+Pointers
+A pointer in C is a way to share a memory address among different contexts (primarily functions). 
+They are primarily used whenever a function needs to modify the content of a variable, of which 
+it doesn't have ownership. 
+
+Memory address of val
+	
+	&val
+
+Pointer assigned to memory address
+
+	int* p = &val;
+	*p = val
+
+Note in the following method we have variables newA because changing *a changes it in memory
+	
+	void update(int *a,int *b) {
+		// Complete this function    
+		int newA = *a + *b;
+		int newB = abs(*a - *b);
+		*a = newA;
+		*b = newB;
+	}
+
+Arrays
+Stored contiguously in memory.
+
+	int a[size];
+
+Vectors
+Arrays that can change in size.
+
+	vector<type> v;
+
+Structs
+A way to combine multiple fields to represent a composite data structure. Structs are automatically public.
+
+	struct Student{
+		int age;
+		string first_name;
+		string last_name;
+		int standard;
+	};
+
+Construct a struct
+	
+	Student s;
+	s.age = 10;
+	s.first_name = "May";
+	s.last_name = "Trix";
+	s.standard = 100;
+
+Accessing a struct
+
+	cout << "The student's name is " << s.first_name << ", " << s.age;
+
+
+Classes
+Classes have data and functions assigned to them. They are different from stucts as they are automatically 
+private.
+
+It's a common practice to make all variables private, and set/get them using public methods. 
+
+
+	class Player {
+		private:
+			int points;
+		public:
+			void set(int a) {
+				points = a;
+			}
+			int get() {
+				return points;
+			}
+	};
+
+
